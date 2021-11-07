@@ -12,14 +12,14 @@ Given an integer, return an integer that is the reverse ordering of numbers
 
 # Pseudocode
 
-* convert int to string
+* Convert int to string
 * if num is negative
-	* store the sign if negative number
-	* remove minus sign from the string
-* reverse the string
-* add back the sign
-* convert to int
-* return int
+	* Store the sign if negative number
+	* Remove minus sign from the string
+* Reverse the string
+* Add back the sign
+* Convert to int
+* Return int
 
 # Solution
 
