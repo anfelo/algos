@@ -10,12 +10,8 @@ func MaxChar(s string) string {
 			ll[string(v)] = 1
 		}
 	}
-	var max string
+	max := s[0:1]
 	for k, v := range ll {
-		if max == "" {
-			max = k
-		}
-
 		if v > ll[max] {
 			max = k
 		}
