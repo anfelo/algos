@@ -13,7 +13,9 @@ Given a string, return the character that is most commonly used in the string.
 - Does string A have the same characters as string B (is it an anagram)?
 - Does the given string have any repeated characters in it?
 
-# Pseudocode
+# Solution 1: char map
+
+## Pseudocode
 
 - create an empty map (object with unique keys)
 - loop over all the chars in string
@@ -25,8 +27,6 @@ Given a string, return the character that is most commonly used in the string.
   - if the value is greater than the prev stored
     store the new key
 - return the key
-
-# Solution 1: char map
 
 ```go
 func MaxChar(s string) string {

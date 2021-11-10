@@ -4,18 +4,30 @@ Given a string, return a new string with the reverse order of characters
 
 ## Examples
 
-* reverse("apple") == "elppa"
-* reverse("hello") == "olleh"
-* reverse("Greetings!") == "!sgniteerG"
+- reverse("apple") == "elppa"
+- reverse("hello") == "olleh"
+- reverse("Greetings!") == "!sgniteerG"
 
-# Pseudocode
+# Solution 1: (appending to the begining)
 
-* Create an empty string called 'reversed'
-* for each character in provided string
-    * Take the character and add it to the start of 'reversed'
-* Return 'reversed'
+## Pseudocode
 
-# Solution 1: (string Split and Join)
+- Create an empty string called 'reversed'
+- for each character in provided string
+  - Take the character and add it to the start of 'reversed'
+- Return 'reversed'
+
+```go
+func Reverse(s string) string {
+    var result string
+    for _, v := range s {
+        result = string(v) + result
+    }
+    return result
+}
+```
+
+# Solution 2: (string Split and Join)
 
 ```go
 func Reverse(s string) string {
@@ -28,7 +40,7 @@ func Reverse(s string) string {
 }
 ```
 
-# Solution 2: (using runes swap - only golang)
+# Solution 3: (using runes swap - only golang)
 
 ```go
 func Reverse(s string) string {
@@ -39,17 +51,5 @@ func Reverse(s string) string {
 	}
 
 	return string(rns)
-}
-```
-
-# Solution 3: (appending to the begining)
-
-```go
-func Reverse(s string) string {
-    var result string
-    for _, v := range s {
-        result = string(v) + result
-    }
-    return result
 }
 ```
