@@ -9,6 +9,14 @@ Write a function that accepts a string. The function should capitalize the first
 
 # Solution: (split words capitalize first char)
 
+## Pseudocode
+
+- split the string into words by the space separator
+- loop over each word
+  - capitalize the first char and assign it to the word i
+- join the words with a space separator
+- return the string
+
 ```go
 func Capitalize(s string) string {
 	w := strings.Split(s, " ")
