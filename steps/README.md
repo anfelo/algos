@@ -5,17 +5,28 @@ Write a function that accepts a positive number N. The function should console l
 # Examples
 
 - steps(2)
-  "#-"
-  "##"
+
+```
+"# "
+"##"
+```
+
 - steps(3)
-  "#--"
-  "##-"
-  "###"
+
+```
+"#  "
+"## "
+"###"
+```
+
 - steps(4)
-  "#---"
-  "##--"
-  "###-"
-  "####"
+
+```
+"#   "
+"##  "
+"### "
+"####"
+```
 
 # Solution 1: (double loop)
 
