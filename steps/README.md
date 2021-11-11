@@ -73,7 +73,7 @@ func Steps(n int) []string {
 
 ## Pseudocode
 
-- if the iteration number is equal to n return
+- if the iteration number is equal to n **return**
 - print the step usign string repeat
 - call the function incrementing the interation number
 
