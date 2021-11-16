@@ -15,7 +15,7 @@ The order in how the items are processed depends on the order of entrance to the
 
 ## Golang
 
-´´´go
+```go
 type Queue struct {
 	Items []int
 }
@@ -35,22 +35,22 @@ func NewQueue() *Queue {
 		Items: []int{},
 	}
 }
-´´´
+```
 
 ## JavaScript
 
-´´´javascript
+```javascript
 class Queue {
-    constructor() {
-        this.items = [];
-    }
+  constructor() {
+    this.items = [];
+  }
 
-    add(item) {
-        this.items.unshift();
-    }
+  add(item) {
+    this.items.unshift();
+  }
 
-    remove() {
-        this.items.pop();
-    }
+  remove() {
+    this.items.pop();
+  }
 }
-´´´
+```
