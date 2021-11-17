@@ -177,3 +177,119 @@ func TestLinkedListInsertLast(t *testing.T) {
 		t.Fatalf("Expected %v but got %v", 3, ll.GetFirst().Data)
 	}
 }
+
+func TestLinkedListGetAt(t *testing.T) {
+	ll := NewLinkedList()
+
+	if ll.GetAt(0) != nil {
+		t.Fatal("Expected node to be nil")
+	}
+
+	ll.InsertFirst(1)
+
+	if ll.GetAt(10) != nil {
+		t.Fatal("Expected node to be nil")
+	}
+
+	ll.InsertFirst(2)
+	ll.InsertFirst(3)
+
+	if ll.GetAt(0).Data != 3 {
+		t.Fatalf("Expected %v but got %v", 3, ll.GetAt(0).Data)
+	}
+
+	if ll.GetAt(1).Data != 2 {
+		t.Fatalf("Expected %v but got %v", 2, ll.GetAt(1).Data)
+	}
+
+	if ll.GetAt(2).Data != 1 {
+		t.Fatalf("Expected %v but got %v", 1, ll.GetAt(2).Data)
+	}
+
+	if ll.GetAt(3) != nil {
+		t.Fatal("Expected node to be nil")
+	}
+}
+
+func TestLinkedListRemoveAt(t *testing.T) {
+	ll := NewLinkedList()
+	ll.InsertFirst(1)
+	ll.InsertFirst(2)
+	ll.InsertFirst(3)
+
+	ll.RemoveAt(10)
+	if ll.GetAt(0).Data != 3 {
+		t.Fatalf("Expected %v but got %v", 3, ll.GetAt(0).Data)
+	}
+
+	ll.RemoveAt(1)
+
+	if ll.GetAt(0).Data != 3 {
+		t.Fatalf("Expected %v but got %v", 3, ll.GetAt(0).Data)
+	}
+
+	if ll.GetAt(1).Data != 1 {
+		t.Fatalf("Expected %v but got %v", 1, ll.GetAt(1).Data)
+	}
+
+	if ll.GetAt(2) != nil {
+		t.Fatal("Expected node to be nil")
+	}
+
+	ll.RemoveAt(0)
+
+	if ll.GetAt(0).Data != 1 {
+		t.Fatalf("Expected %v but got %v", 1, ll.GetAt(0).Data)
+	}
+
+	ll.RemoveAt(0)
+
+	if ll.GetAt(0) != nil {
+		t.Fatal("Expected node to be nil")
+	}
+}
+
+func TestLinkedListInsertAt(t *testing.T) {
+	ll := NewLinkedList()
+
+	ll.InsertAt(1, 2)
+	if ll.GetAt(0) == nil {
+		t.Fatal("Expected node not to be nil")
+	}
+	if ll.GetAt(0).Data != 1 {
+		t.Fatalf("Expected %v but got %v", 1, ll.GetAt(0).Data)
+	}
+
+	ll.InsertAt(2, 1)
+	if ll.GetAt(1).Data != 2 {
+		t.Fatalf("Expected %v but got %v", 2, ll.GetAt(1).Data)
+	}
+
+	ll.InsertAt(3, 10)
+	if ll.GetLast().Data != 3 {
+		t.Fatalf("Expected %v but got %v", 3, ll.GetLast().Data)
+	}
+}
+
+func TestLinkedListForEach(t *testing.T) {
+	ll := NewLinkedList()
+	ll.InsertFirst(1)
+	ll.InsertFirst(2)
+	ll.InsertFirst(3)
+
+	ll.ForEach(func(n *Node, i int) {
+		n.Data += 10
+	})
+
+	if ll.GetAt(0).Data != 13 {
+		t.Fatalf("Expected %v but got %v", 13, ll.GetAt(0).Data)
+	}
+
+	if ll.GetAt(1).Data != 12 {
+		t.Fatalf("Expected %v but got %v", 12, ll.GetAt(1).Data)
+	}
+
+	if ll.GetAt(2).Data != 11 {
+		t.Fatalf("Expected %v but got %v", 11, ll.GetAt(2).Data)
+	}
+}

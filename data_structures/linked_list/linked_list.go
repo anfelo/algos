@@ -78,18 +78,63 @@ func (l *LinkedList) RemoveLast() {
 }
 
 func (l *LinkedList) InsertLast(d int) {
-	// if l.Head == nil {
-	// 	l.Head = NewNode(d, nil)
-	// }
-	// curr := l.Head
-	// for curr.Next != nil {
-	// 	curr = curr.Next
-	// }
-	// curr.Next = NewNode(d, nil)
 	last := l.GetLast()
 	if last == nil {
 		l.Head = NewNode(d, nil)
 		return
 	}
 	last.Next = NewNode(d, nil)
+}
+
+func (l *LinkedList) GetAt(index int) *Node {
+	if l.Head == nil {
+		return nil
+	}
+	i := 0
+	curr := l.Head
+	for i < index {
+		if curr == nil {
+			return curr
+		}
+		i++
+		curr = curr.Next
+	}
+	return curr
+}
+
+func (l *LinkedList) RemoveAt(index int) {
+	if l.Head == nil {
+		return
+	}
+
+	if index == 0 {
+		l.Head = l.Head.Next
+		return
+	}
+
+	prev := l.GetAt(index - 1)
+	if prev == nil || prev.Next == nil {
+		return
+	}
+
+	prev.Next = prev.Next.Next
+}
+
+func (l *LinkedList) InsertAt(d int, index int) {
+	n := l.GetAt(index - 1)
+	if n == nil {
+		l.InsertLast(d)
+		return
+	}
+	n.Next = NewNode(d, n.Next)
+}
+
+func (l *LinkedList) ForEach(f func(n *Node, i int)) {
+	count := 0
+	curr := l.Head
+	for curr != nil {
+		f(curr, count)
+		count++
+		curr = curr.Next
+	}
 }
