@@ -293,3 +293,49 @@ func TestLinkedListForEach(t *testing.T) {
 		t.Fatalf("Expected %v but got %v", 11, ll.GetAt(2).Data)
 	}
 }
+
+func TestLinkedListGenerator(t *testing.T) {
+	ll := NewLinkedList()
+	ll.InsertFirst(1)
+	ll.InsertFirst(2)
+	ll.InsertFirst(3)
+
+	for v := range ll.Nodes() {
+		v.Data += 10
+	}
+
+	if ll.GetAt(0).Data != 13 {
+		t.Fatalf("Expected %v but got %v", 13, ll.GetAt(0).Data)
+	}
+
+	if ll.GetAt(1).Data != 12 {
+		t.Fatalf("Expected %v but got %v", 12, ll.GetAt(1).Data)
+	}
+
+	if ll.GetAt(2).Data != 11 {
+		t.Fatalf("Expected %v but got %v", 11, ll.GetAt(2).Data)
+	}
+}
+
+func TestLinkedListIterator(t *testing.T) {
+	ll := NewLinkedList()
+	ll.InsertFirst(1)
+	ll.InsertFirst(2)
+	ll.InsertFirst(3)
+
+	for it := NewLinkedListIterator(ll); it.MoveNext(); {
+		it.Value().Data += 10
+	}
+
+	if ll.GetAt(0).Data != 13 {
+		t.Fatalf("Expected %v but got %v", 13, ll.GetAt(0).Data)
+	}
+
+	if ll.GetAt(1).Data != 12 {
+		t.Fatalf("Expected %v but got %v", 12, ll.GetAt(1).Data)
+	}
+
+	if ll.GetAt(2).Data != 11 {
+		t.Fatalf("Expected %v but got %v", 11, ll.GetAt(2).Data)
+	}
+}

@@ -138,3 +138,35 @@ func (l *LinkedList) ForEach(f func(n *Node, i int)) {
 		curr = curr.Next
 	}
 }
+
+// Generator
+func (l *LinkedList) Nodes() <-chan *Node {
+	out := make(chan *Node)
+	go func() {
+		defer close(out)
+		curr := l.Head
+		for curr != nil {
+			out <- curr
+			curr = curr.Next
+		}
+	}()
+	return out
+}
+
+type LinkedListIterator struct {
+	list    *LinkedList
+	current int
+}
+
+func NewLinkedListIterator(l *LinkedList) *LinkedListIterator {
+	return &LinkedListIterator{l, -1}
+}
+
+func (li *LinkedListIterator) MoveNext() bool {
+	li.current++
+	return li.current < li.list.Size()
+}
+
+func (li *LinkedListIterator) Value() *Node {
+	return li.list.GetAt(li.current)
+}
