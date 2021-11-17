@@ -153,6 +153,7 @@ func (l *LinkedList) Nodes() <-chan *Node {
 	return out
 }
 
+// Iterator
 type LinkedListIterator struct {
 	list    *LinkedList
 	current int
