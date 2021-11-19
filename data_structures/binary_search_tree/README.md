@@ -43,7 +43,7 @@ func (n *Node) InsertRecursive(d int) {
 
 ## Insert Method (Depth-First)
 
-**Not Recommended**: Ends up traversing more then needed in some cases
+**Not Recommended**: Ends up traversing more than needed in some cases
 
 ```go
 func (n *Node) Insert(d int) {
