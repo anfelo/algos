@@ -2,11 +2,15 @@
 
 Find the greatest element in the array and move it to the far right side of the array
 
+Best case complexity: O(n) - sorted array
+Average case complexity: O(n^2)
+Worst case complexity: O(n^2)
+
 ## Pseudocode
 
 * from i=0 to i < array length
 	* from j=0 to array length - i
-		* if the elementat j is greater that j+1
+		* if the element at j is greater than j+1
 			* swap elements at j and j+1
 
 ```go
