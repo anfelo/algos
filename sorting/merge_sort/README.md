@@ -1,6 +1,8 @@
 # MergeSort
 
-MergeSort is solved commonly using recursion. It uses a helper function 'merge' that takes 2 sorted arrays and merge them into 1 sorted array
+MergeSort is solved commonly using recursion. It uses a helper function 'merge' that takes 2 **sorted** arrays and merge them into 1 sorted array
+
+Runtime complexity: O(n*log(n))
 
 ## Pseudocode
 
@@ -42,7 +44,7 @@ func Merge(a1 []int, a2 []int) []int {
 
 ```go
 func MergeSort(arr []int) []int {
-	if len(arr) == 1 {
+	if len(arr) < 2 {
 		return arr
 	}
 	h := len(arr) / 2
