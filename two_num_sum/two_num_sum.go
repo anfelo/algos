@@ -1,6 +1,8 @@
 package two_num_sum
 
-// O(n^2) time | O(n^2) space
+import "sort"
+
+// O(n^2) time | O(1) space
 func TwoNumSum(array []int, target int) []int {
 	for i := 0; i < len(array); i++ {
 		for j := i + 1; j < len(array); j++ {
@@ -21,6 +23,23 @@ func TwoNumSum2(array []int, target int) []int {
 			return []int{potentialMatch, num}
 		}
 		nums[num] = true
+	}
+	return []int{}
+}
+
+// O(n*log(n)) time | O(1) space
+func TwoNumSum3(array []int, target int) []int {
+	sort.Ints(array)
+	left, right := 0, len(array)-1
+	for left < right {
+		currentSum := array[left] + array[right]
+		if currentSum == target {
+			return []int{array[left], array[right]}
+		} else if currentSum < target {
+			left += 1
+		} else {
+			right -= 1
+		}
 	}
 	return []int{}
 }
