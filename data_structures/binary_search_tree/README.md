@@ -7,6 +7,8 @@ A variation of a regular tree that has a couple of constrains on the way the tre
 
 The most common types of questions regarding binary search trees are inserting new nodes and validating that the tree is well structured
 
+Worst case scenario on BST is when all items area added in order. We end up with O(n) complexity to find a item in the tree.
+
 # Implementation
 
 ## Node

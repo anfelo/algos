@@ -65,3 +65,36 @@ func (n *Node) Contains(d int) *Node {
 	// Default Case
 	return nil
 }
+
+// Depth-First
+func PreorderTraverse(n *Node, arr []int) []int {
+	if n == nil {
+		return arr
+	}
+	arr = append(arr, n.Data)
+	arr = PreorderTraverse(n.Left, arr)
+	arr = PreorderTraverse(n.Right, arr)
+	return arr
+}
+
+// Depth-First
+func InorderTraverse(n *Node, arr []int) []int {
+	if n == nil {
+		return arr
+	}
+	arr = PreorderTraverse(n.Left, arr)
+	arr = append(arr, n.Data)
+	arr = PreorderTraverse(n.Right, arr)
+	return arr
+}
+
+// Depth-First
+func PostorderTraverse(n *Node, arr []int) []int {
+	if n == nil {
+		return arr
+	}
+	arr = PreorderTraverse(n.Left, arr)
+	arr = PreorderTraverse(n.Right, arr)
+	arr = append(arr, n.Data)
+	return arr
+}
