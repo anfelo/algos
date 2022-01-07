@@ -18,37 +18,27 @@ Given a string, return the character that is most commonly used in the string.
 ## Pseudocode
 
 - create an empty map (object with unique keys)
+- initialize map with a maxChar key equals to 0
+- keep a reference to the maxChar string
 - loop over all the chars in string
   - if the key is not yet in the map
     - add the key to the map with value 1
   - else sum the value by 1
-- create a reference to the first key
-- loop over the map keys
-  - if the value is greater than the prev stored
-    store the new key
-- return the key
+  - if the current char count is greater than the maxChar
+    - set the maxChar to the current char
 
 ```go
 func MaxChar(s string) string {
-	ll := make(map[string]int)
+	currentMaxChar := ""
+	ll := map[string]int{currentMaxChar: 0}
 	for _, v := range s {
-		_, exists := ll[string(v)]
-		if exists {
-			ll[string(v)] += 1
-		} else {
-			ll[string(v)] = 1
-		}
-	}
-	var max string
-	for k, v := range ll {
-		if max == "" {
-			max = k
-		}
+		ll[string(v)] += 1
 
-		if v > ll[max] {
-			max = k
+		if ll[string(v)] > ll[currentMaxChar] {
+			currentMaxChar = string(v)
 		}
 	}
-	return string(max)
+
+	return currentMaxChar
 }
 ```
