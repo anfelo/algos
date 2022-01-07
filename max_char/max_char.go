@@ -1,20 +1,15 @@
 package maxchar
 
 func MaxChar(s string) string {
-	ll := make(map[string]int)
+	currentMaxChar := ""
+	ll := map[string]int{currentMaxChar: 0}
 	for _, v := range s {
-		_, exists := ll[string(v)]
-		if exists {
-			ll[string(v)] += 1
-		} else {
-			ll[string(v)] = 1
+		ll[string(v)] += 1
+
+		if ll[string(v)] > ll[currentMaxChar] {
+			currentMaxChar = string(v)
 		}
 	}
-	max := s[0:1]
-	for k, v := range ll {
-		if v > ll[max] {
-			max = k
-		}
-	}
-	return string(max)
+
+	return currentMaxChar
 }
